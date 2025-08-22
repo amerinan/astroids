@@ -1,12 +1,16 @@
 import pygame
 
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS, ASTEROID_KINDS, ASTEROID_SPAWN_RATE, ASTEROID_MAX_RADIUS
+from player import Player
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS, ASTEROID_KINDS, ASTEROID_SPAWN_RATE, ASTEROID_MAX_RADIUS, PLAYER_RADIUS
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     dt = 0
+    
+    
     
     while True:
         for event in pygame.event.get():
@@ -14,6 +18,8 @@ def main():
                  return
              
         screen.fill("black")
+        player.update(dt)
+        player.draw(screen)
         pygame.display.flip()
         
         #limit the framerate to 60 fps
