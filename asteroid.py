@@ -1,7 +1,8 @@
 from constants import *
 from circleshape import *
+import pygame
 
-class Astroid(CircleShape):
+class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
         
@@ -9,4 +10,4 @@ class Astroid(CircleShape):
         pygame.draw.circle(screen, (0,0,0),(self.x,self.y),self.radius,2)
         
     def update(self, dt):
-        (self.velocity * dt) + self.velocity
+        self.velocity += (self.velocity * dt)
