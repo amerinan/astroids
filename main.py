@@ -23,12 +23,8 @@ def main():
     
     player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     
-    astroid_field = AsteroidField()
-    
-    updatable.add(player)
-    drawable.add(player)
-    updatable.add(astroid_field)
-    
+    asteroid_field = AsteroidField()
+        
     while True:
         for event in pygame.event.get():
              if event.type == pygame.QUIT:
