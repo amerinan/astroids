@@ -9,7 +9,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     
-    AsteroidField()
+    
     
     dt = 0
     
@@ -22,6 +22,8 @@ def main():
     AsteroidField.containers = (updatable)
     
     player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+    
+    AsteroidField()
     
     updatable.add(player)
     drawable.add(player)
