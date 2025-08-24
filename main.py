@@ -37,8 +37,8 @@ def main():
         
         for asteroid in asteroids:
             if asteroid.colisionCheck(player) == True:
-                 sys.exit()
                  print("Game over!")
+                 sys.exit()
         
         for object in drawable:
             object.draw(screen)
