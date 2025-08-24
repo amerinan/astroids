@@ -45,7 +45,6 @@ def main():
         for object in drawable:
             object.draw(screen)
         pygame.display.flip()
-        
         #limit the framerate to 60 fps
         dt = clock.tick(60) / 1000 
         
