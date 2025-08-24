@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from asteroid import Asteroid
 from asteroidfield import *
 from player import Player
@@ -31,11 +31,15 @@ def main():
                  return
         
         
-        for asteroid in asteroids:
-            self.c
-             
+            
         screen.fill("black")
         updatable.update(dt)
+        
+        for asteroid in asteroids:
+            if asteroid.colisionCheck(player) == True:
+                 sys.exit()
+                 print("Game over!")
+        
         for object in drawable:
             object.draw(screen)
         pygame.display.flip()
