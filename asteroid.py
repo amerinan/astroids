@@ -1,11 +1,11 @@
 from constants import *
 from circleshape import *
-from asteroidfield import *
 import pygame, random
 
 class Asteroid(CircleShape):
-    def __init__(self, x, y, radius, velocity=None):
+    def __init__(self, x, y, radius, velocity=None, asteroid_field_instance=None):
         super().__init__(x, y, radius)
+        self.AsteroidField = asteroid_field_instance
         if  velocity is None:
             self.velocity = pygame.math.Vector2(0,0)
         else:
@@ -27,11 +27,7 @@ class Asteroid(CircleShape):
         vector_1 = self.velocity.rotate(angle)
         vector_2 = self.velocity.rotate(-angle)
         
-        new_radius = self.radius - ASTEROID_MIN_RADIUS
-        
-        asteroid_1 = Asteroid(self.position.x, self.position.y, new_radius, vector_1 * ASTEROID_SPLIT_SPEED_MULTIPLIER)
-        asteroid_2 = Asteroid(self.position.x, self.position.y, new_radius, vector_2 * ASTEROID_SPLIT_SPEED_MULTIPLIER)
-        
-        AsteroidField.add(asteroid_1)
-        AsteroidField.add(asteroid_2)
-        
+        new_radius = self.radius - ASTEROID_MIN_RADIUS     
+             
+        self.AsteroidField.spawn(new_radius, self.position, vector_1 * ASTEROID_SPLIT_SPEED_MULTIPLIER)
+        self.AsteroidField.spawn(new_radius, self.position, vector_2 * ASTEROID_SPLIT_SPEED_MULTIPLIER)        
